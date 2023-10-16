@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -16,7 +16,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
-      favicon: './src/assets/favicon.png'
+      favicon: './src/assets/icons/favicon.png'
     }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
@@ -28,7 +28,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
       }
     ]
   },
@@ -36,6 +44,13 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     filename: 'index.js',
-    assetModuleFilename: './assets/[name][ext]'
+    assetModuleFilename: (pathData) => {
+      const filepath = path
+        .dirname(pathData.filename)
+        .split('/')
+        .slice(1)
+        .join('/');
+      return `${filepath}/[name][ext]`;
+    }
   }
 };
