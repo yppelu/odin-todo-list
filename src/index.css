@@ -94,4 +94,11 @@ body {
   font-weight: 400;
 }
 
-@import url("./components/header/header.css");
+.header-wrapper {}
+
+@import url("./UI/header/header.css");
+
+.main-wrapper {}
+
+@import url("./UI/sidebar/sidebar.css");
+@import url("./UI/main-content/main-content.css");
