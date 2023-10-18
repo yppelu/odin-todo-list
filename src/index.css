@@ -88,15 +88,20 @@ h6 {
   overflow-wrap: break-word;
 }
 
+:root {
+  --secondary-bg-clr: #DC4C3E;
+  --secondary-font-clr: #FFFFFF;
+  --sidebar-bg-clr: #FCF9F9;
+  --primary-font-clr: #202020;
+  --transition: all 0.15s ease-in-out;
+}
+
 body {
+  color: var(--font-clr);
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
 }
-
-.header-wrapper {}
-
-@import url("./UI/header/header.css");
 
 .main-wrapper {}
 
