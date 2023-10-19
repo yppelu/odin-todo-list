@@ -1,0 +1,11 @@
+@import url("./sidebar/sidebar.css");
+
+.content {
+  overflow: hidden;
+  width: 100%;
+}
+
+@import url("./header/header.css");
+@import url("./main/main.css");
+
+@import url("./add-task-form/add-task-form.css");

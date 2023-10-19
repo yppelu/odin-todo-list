@@ -1,2 +1,11 @@
 @import url("./UI/common/common.css");
-@import url("./UI/content/content.css");
+
+.wrapper {
+  display: flex;
+
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+@import url("./UI/components/components.css");

@@ -1,0 +1,14 @@
+.main {
+  background-color: var(--main-bg-color);
+  transition: all var(--transition);
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .main_collapsed {
+    opacity: 0.5;
+    pointer-events: none;
+    transform: translateX(300px);
+    user-select: none;
+  }
+}

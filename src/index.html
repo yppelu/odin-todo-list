@@ -8,9 +8,12 @@
 </head>
 
 <body>
-  <div class="content">
-    <%= require('html-loader!./UI/content/sidebar/sidebar.html').default %>
-    <%= require('html-loader!./UI/content/main-content/main-content.html').default %>
+  <div class="wrapper">
+    <%= require('html-loader!./UI/components/sidebar/sidebar.html').default %>
+    <div class="content">
+      <%= require('html-loader!./UI/components/header/header.html').default %>
+      <%= require('html-loader!./UI/components/main/main.html').default %>
+    </div>
   </div>
 </body>
 
