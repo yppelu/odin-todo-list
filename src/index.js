@@ -1,2 +1,4 @@
 import './index.css';
-import './UI/sidebar/sidebar.js'
+
+import './UI/common/common.js';
+import './UI/content/content.js';

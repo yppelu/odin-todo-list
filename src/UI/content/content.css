@@ -1,0 +1,5 @@
+.content {}
+
+@import url("./sidebar/sidebar.css");
+@import url("./main-content/main-content.css");
+@import url("./add-task-form/add-task-form.css");
