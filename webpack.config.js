@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist')
+      directory: path.resolve(__dirname, 'docs')
     },
     port: 5500,
     hot: false,
@@ -41,7 +41,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     clean: true,
     filename: 'index.js',
     assetModuleFilename: (pathData) => {

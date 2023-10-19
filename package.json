@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx webpack --mode=production",
     "start": "npx webpack serve --mode=development",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "git add ./docs/ -f && git commit -m \"Update site deployment\" && git push origin main"
   },
   "keywords": [],
   "author": "",
