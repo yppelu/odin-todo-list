@@ -59,6 +59,7 @@
   border-radius: 0.5rem;
   color: var(--font-color-for-btn-with-primary-bg);
   cursor: pointer;
+  transition: all var(--transition);
 
   display: flex;
   gap: 1ch;
@@ -70,13 +71,13 @@
   width: 100%;
 }
 
+.sidebar__add-task-btn:active {
+  transform: scale(97.5%);
+}
+
 .sidebar__add-task-icon {
   fill: var(--font-color-for-btn-with-primary-bg);
   height: 40%;
-}
-
-.sidebar__add-task-btn:hover {
-  background-color: color-mix(in srgb, var(--primary-color) 85%, #000000 15%);
 }
 
 .sidebar__section {}
@@ -97,10 +98,8 @@
 
 .sidebar__section-list {}
 
-.sidebar__section-list-item {}
-
-.sidebar__section-list-item:hover {
-  background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
+.sidebar__section-list-item {
+  transition: all var(--transition);
 }
 
 .sidebar__open-section-btn {
@@ -127,10 +126,15 @@
   appearance: none;
   background-color: transparent;
   cursor: pointer;
+  transition: all var(--transition);
 
   border: none;
   padding-top: 0.5rem;
   width: 1.35rem;
+}
+
+.sidebar__add-project-btn:active {
+  transform: scale(90%);
 }
 
 .sidebar__add-project-icon {
@@ -151,6 +155,16 @@
   }
 
   .sidebar__collapse-sidebar-btn_hidden {
-    visibility: hidden;
+    display: none;
+  }
+}
+
+@media (hover:hover) {
+  .sidebar__add-task-btn:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 85%, #000000 15%);
+  }
+
+  .sidebar__section-list-item:hover {
+    background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
   }
 }
