@@ -18,7 +18,6 @@
 .sidebar__collapse-sidebar-btn {
   appearance: none;
   background-color: transparent;
-  cursor: pointer;
 
   display: none;
 
@@ -58,7 +57,6 @@
   background-color: var(--primary-color);
   border-radius: 0.5rem;
   color: var(--font-color-for-btn-with-primary-bg);
-  cursor: pointer;
   transition: all var(--transition);
 
   display: flex;
@@ -100,12 +98,12 @@
 
 .sidebar__section-list-item {
   transition: all var(--transition);
+  height: 2.25rem;
 }
 
 .sidebar__open-section-btn {
   appearance: none;
   background-color: transparent;
-  cursor: pointer;
 
   display: flex;
   gap: 1ch;
@@ -113,7 +111,7 @@
 
   border: none;
   padding-left: 1ch;
-  height: 2.25rem;
+  height: 100%;
   width: 100%;
 }
 
@@ -125,7 +123,6 @@
 .sidebar__add-project-btn {
   appearance: none;
   background-color: transparent;
-  cursor: pointer;
   transition: all var(--transition);
 
   border: none;
@@ -138,6 +135,30 @@
 }
 
 .sidebar__add-project-icon {
+  fill: var(--font-color);
+}
+
+.sidebar__section-list-item_project {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__project-control-btn {
+  aspect-ratio: 1 / 1;
+  appearance: none;
+  background-color: transparent;
+  transition: all var(--transition);
+
+  border: none;
+  margin-left: 0.5ch;
+  height: 70%;
+}
+
+.sidebar__project-control-btn:active {
+  transform: scale(90%);
+}
+
+.sidebar__project-control-icon {
   fill: var(--font-color);
 }
 
@@ -166,5 +187,21 @@
 
   .sidebar__section-list-item:hover {
     background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
+  }
+
+  .sidebar__project-control-btn {
+    opacity: 0;
+  }
+
+  .sidebar__section-list-item_project:hover .sidebar__project-control-btn {
+    opacity: 1;
+  }
+
+  .sidebar__project-control-icon {
+    opacity: 0.75;
+  }
+
+  .sidebar__project-control-btn:hover .sidebar__project-control-icon {
+    opacity: 1;
   }
 }
