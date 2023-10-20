@@ -4,11 +4,141 @@
   padding: 1rem;
 }
 
+.main__project-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+
+  margin-bottom: 1rem;
+}
+
+.main__project-section {
+  margin-bottom: 2rem;
+  padding-left: 1ch;
+}
+
+.main__project-section-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  margin-bottom: 1rem;
+}
+
+.task {
+  transition: all var(--transition);
+
+  display: flex;
+  gap: 1ch;
+
+  border-bottom: 1px solid color-mix(in srgb, var(--font-color) 25%, var(--main-bg-color) 75%);
+  border-top: 1px solid color-mix(in srgb, var(--font-color) 25%, var(--main-bg-color) 75%);
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.task__complete-task-btn {
+  background-color: transparent;
+  border-radius: 50%;
+
+  border: 2px solid var(--font-color);
+  margin-top: 0.1675rem;
+  height: 2ch;
+  max-width: 2ch;
+  min-width: 2ch;
+}
+
+.task__complete-task-icon {
+  fill: var(--font-color);
+  opacity: 0;
+  transition: all var(--transition);
+}
+
+.task__block-divider {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.task__block-divider_main-info {
+  align-items: flex-start;
+  width: 100%;
+}
+
+.task__title {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.task__description {
+  font-size: 0.95rem;
+}
+
+.task__due-date {
+  color: var(--font-color);
+  font-size: 0.95rem;
+  opacity: 0.75;
+
+  margin-top: 0.5rem;
+}
+
+.task__control-buttons-block {
+  width: max-content;
+}
+
+.task__control-btn {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  transition: all var(--transition);
+
+  width: 1.4rem;
+}
+
+.task__control-btn:active {
+  transform: scale(90%);
+}
+
+.task__control-icon {
+  fill: var(--font-color);
+}
+
+.task__containing-project-name {
+  width: max-content;
+}
+
+
 @media screen and (max-width: 768px) {
   .main_collapsed {
     opacity: 0.5;
     pointer-events: none;
     transform: translateX(300px);
     user-select: none;
+  }
+}
+
+@media (hover:hover) {
+  .task:hover {
+    border-bottom: 1px solid var(--font-color);
+    border-top: 1px solid var(--font-color);
+  }
+
+  .task__complete-task-icon:hover {
+    opacity: 0.5;
+  }
+
+  .task__control-btn {
+    opacity: 0;
+  }
+
+  .task:hover .task__control-btn {
+    opacity: 1;
+  }
+
+  .task__control-icon {
+    opacity: 0.75;
+  }
+
+  .task__control-btn:hover .task__control-icon {
+    opacity: 1;
   }
 }
