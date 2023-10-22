@@ -111,6 +111,10 @@ body {
   font-size: 1rem;
   font-weight: 400;
 }
+
+button {
+  cursor: pointer;
+}
 .sidebar {
   background-color: var(--bg-color);
   transition: all var(--transition);
@@ -131,7 +135,6 @@ body {
 .sidebar__collapse-sidebar-btn {
   appearance: none;
   background-color: transparent;
-  cursor: pointer;
 
   display: none;
 
@@ -171,7 +174,7 @@ body {
   background-color: var(--primary-color);
   border-radius: 0.5rem;
   color: var(--font-color-for-btn-with-primary-bg);
-  cursor: pointer;
+  transition: all var(--transition);
 
   display: flex;
   gap: 1ch;
@@ -183,13 +186,13 @@ body {
   width: 100%;
 }
 
+.sidebar__add-task-btn:active {
+  transform: scale(97.5%);
+}
+
 .sidebar__add-task-icon {
   fill: var(--font-color-for-btn-with-primary-bg);
   height: 40%;
-}
-
-.sidebar__add-task-btn:hover {
-  background-color: color-mix(in srgb, var(--primary-color) 85%, #000000 15%);
 }
 
 .sidebar__section {}
@@ -210,16 +213,14 @@ body {
 
 .sidebar__section-list {}
 
-.sidebar__section-list-item {}
-
-.sidebar__section-list-item:hover {
-  background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
+.sidebar__section-list-item {
+  transition: all var(--transition);
+  height: 2.25rem;
 }
 
 .sidebar__open-section-btn {
   appearance: none;
   background-color: transparent;
-  cursor: pointer;
 
   display: flex;
   gap: 1ch;
@@ -227,7 +228,7 @@ body {
 
   border: none;
   padding-left: 1ch;
-  height: 2.25rem;
+  height: 100%;
   width: 100%;
 }
 
@@ -239,14 +240,42 @@ body {
 .sidebar__add-project-btn {
   appearance: none;
   background-color: transparent;
-  cursor: pointer;
+  transition: all var(--transition);
 
   border: none;
   padding-top: 0.5rem;
   width: 1.35rem;
 }
 
+.sidebar__add-project-btn:active {
+  transform: scale(90%);
+}
+
 .sidebar__add-project-icon {
+  fill: var(--font-color);
+}
+
+.sidebar__section-list-item_project {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__project-control-btn {
+  aspect-ratio: 1 / 1;
+  appearance: none;
+  background-color: transparent;
+  transition: all var(--transition);
+
+  border: none;
+  margin-left: 0.5ch;
+  height: 70%;
+}
+
+.sidebar__project-control-btn:active {
+  transform: scale(90%);
+}
+
+.sidebar__project-control-icon {
   fill: var(--font-color);
 }
 
@@ -264,7 +293,33 @@ body {
   }
 
   .sidebar__collapse-sidebar-btn_hidden {
-    visibility: hidden;
+    display: none;
+  }
+}
+
+@media (hover:hover) {
+  .sidebar__add-task-btn:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 85%, #000000 15%);
+  }
+
+  .sidebar__section-list-item:hover {
+    background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
+  }
+
+  .sidebar__project-control-btn {
+    opacity: 0;
+  }
+
+  .sidebar__section-list-item_project:hover .sidebar__project-control-btn {
+    opacity: 1;
+  }
+
+  .sidebar__project-control-icon {
+    opacity: 0.75;
+  }
+
+  .sidebar__project-control-btn:hover .sidebar__project-control-icon {
+    opacity: 1;
   }
 }
 .header {
@@ -304,12 +359,142 @@ body {
   padding: 1rem;
 }
 
+.main__project-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+
+  margin-bottom: 1rem;
+}
+
+.main__project-section {
+  margin-bottom: 2rem;
+  padding-left: 1ch;
+}
+
+.main__project-section-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  margin-bottom: 1rem;
+}
+
+.task {
+  transition: all var(--transition);
+
+  display: flex;
+  gap: 1ch;
+
+  border-bottom: 1px solid color-mix(in srgb, var(--font-color) 25%, var(--main-bg-color) 75%);
+  border-top: 1px solid color-mix(in srgb, var(--font-color) 25%, var(--main-bg-color) 75%);
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.task__complete-task-btn {
+  background-color: transparent;
+  border-radius: 50%;
+
+  border: 2px solid var(--font-color);
+  margin-top: 0.1675rem;
+  height: 2ch;
+  max-width: 2ch;
+  min-width: 2ch;
+}
+
+.task__complete-task-icon {
+  fill: var(--font-color);
+  opacity: 0;
+  transition: all var(--transition);
+}
+
+.task__block-divider {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.task__block-divider_main-info {
+  align-items: flex-start;
+  width: 100%;
+}
+
+.task__title {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.task__description {
+  font-size: 0.95rem;
+}
+
+.task__due-date {
+  color: var(--font-color);
+  font-size: 0.95rem;
+  opacity: 0.75;
+
+  margin-top: 0.5rem;
+}
+
+.task__control-buttons-block {
+  width: max-content;
+}
+
+.task__control-btn {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  transition: all var(--transition);
+
+  width: 1.4rem;
+}
+
+.task__control-btn:active {
+  transform: scale(90%);
+}
+
+.task__control-icon {
+  fill: var(--font-color);
+}
+
+.task__containing-project-name {
+  width: max-content;
+}
+
+
 @media screen and (max-width: 768px) {
   .main_collapsed {
     opacity: 0.5;
     pointer-events: none;
     transform: translateX(300px);
     user-select: none;
+  }
+}
+
+@media (hover:hover) {
+  .task:hover {
+    border-bottom: 1px solid var(--font-color);
+    border-top: 1px solid var(--font-color);
+  }
+
+  .task__complete-task-icon:hover {
+    opacity: 0.5;
+  }
+
+  .task__control-btn {
+    opacity: 0;
+  }
+
+  .task:hover .task__control-btn {
+    opacity: 1;
+  }
+
+  .task__control-icon {
+    opacity: 0.75;
+  }
+
+  .task__control-btn:hover .task__control-icon {
+    opacity: 1;
   }
 }
 
