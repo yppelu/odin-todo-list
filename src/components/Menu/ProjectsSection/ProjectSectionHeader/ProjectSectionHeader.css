@@ -25,7 +25,6 @@
 
 .project-section__add-project-btn {
   background-color: transparent;
-  transition: all 0.15s ease-in-out;
 
   aspect-ratio: 1 / 1;
   border: none;
