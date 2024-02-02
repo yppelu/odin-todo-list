@@ -1,0 +1,41 @@
+.project-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 2.025rem;
+  width: 100%;
+}
+
+.project-section__title {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.project-section__add-project-input {
+  appearance: none;
+  background-color: var(--main-bg-color);
+  border-radius: 0.5rem;
+
+  border: none;
+  height: 100%;
+  margin-right: 0.5ch;
+  padding-left: 1ch;
+  width: 100%;
+}
+
+.project-section__add-project-btn {
+  background-color: transparent;
+  transition: all 0.15s ease-in-out;
+
+  border: none;
+  width: 1.35rem;
+}
+
+.project-section__add-project-btn:active {
+  transform: scale(0.925);
+}
+
+.project-section__add-project-icon {
+  fill: var(--font-color);
+}

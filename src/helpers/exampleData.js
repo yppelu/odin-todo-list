@@ -1,4 +1,4 @@
-export const projects = [
+export const exampleData = [
   {
     id: 1,
     title: 'Gym',
