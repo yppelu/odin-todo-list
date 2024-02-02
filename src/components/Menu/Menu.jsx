@@ -3,7 +3,7 @@ import './Menu.css';
 import HomeSection from './HomeSection/HomeSection';
 import ProjectSection from './ProjectsSection/ProjectSection';
 
-export default function Menu({ projects, setNewProject }) {
+export default function Menu({ projects, setNewProject, editProject, removeProject }) {
   return (
     <div className='menu'>
       <div className='menu__header'>
@@ -27,7 +27,7 @@ export default function Menu({ projects, setNewProject }) {
         Add task
       </button>
       <HomeSection />
-      <ProjectSection projects={projects} setNewProject={setNewProject} />
+      <ProjectSection projects={projects} setNewProject={setNewProject} editProject={editProject} removeProject={removeProject} />
     </div>
   );
 }

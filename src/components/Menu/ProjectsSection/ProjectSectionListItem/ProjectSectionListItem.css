@@ -38,9 +38,53 @@
   transition: all 0.15s ease-in-out;
 }
 
+.project-section__edit-project-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5ch;
+
+  height: 2rem;
+  width: 100%;
+}
+
+.project-section__eit-project-input {
+  appearance: none;
+  background-color: var(--main-bg-color);
+
+  border: none;
+  height: 100%;
+  margin-right: 0.5ch;
+  padding-left: 1ch;
+  width: 100%;
+}
+
+.project-section__edit-project-button {
+  aspect-ratio: 1 / 1;
+  appearance: none;
+  background-color: transparent;
+  transition: all 0.15s ease-in-out;
+
+  border: none;
+  margin-left: 0.5ch;
+  height: calc(2.25rem * 0.6);
+}
+
+.project-section__edit-project-button:active {
+  transform: scale(0.925);
+}
+
+.project-section__edit-project-icon {
+  fill: var(--font-color);
+}
+
 @media (hover: hover) {
   .project-section__list-item:hover {
     background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
+  }
+
+  .project-section__list-item--editing:hover {
+    background-color: transparent;
   }
 
   .project-section__project-control-btn {

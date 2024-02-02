@@ -18,7 +18,28 @@ export default function App() {
     setProjects(newProjects);
   }
 
+  function handleRemoveProject(id) {
+    const newProjects = JSON.parse(JSON.stringify(projects)).filter(project => project.id !== id);
+    setProjects(newProjects);
+  }
+
+  function handleEditProject(id, title) {
+    const newProjects = JSON.parse(JSON.stringify(projects));
+    for (const project of newProjects) {
+      if (project.id === id) {
+        project.title = title;
+        break;
+      }
+    }
+    setProjects(newProjects);
+  }
+
   return (
-    <Menu projects={projects} setNewProject={handleSetNewProject} />
+    <Menu
+      projects={projects}
+      setNewProject={handleSetNewProject}
+      editProject={handleEditProject}
+      removeProject={handleRemoveProject}
+    />
   );
 }

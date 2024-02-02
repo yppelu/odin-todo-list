@@ -5,7 +5,7 @@ import './ProjectSection.css';
 import ProjectSectionListItem from './ProjectSectionListItem/ProjectSectionListItem';
 import ProjectSectionHeader from './ProjectSectionHeader/ProjectSectionHeader';
 
-export default function ProjectSection({ projects, setNewProject }) {
+export default function ProjectSection({ projects, setNewProject, editProject, removeProject }) {
   const [isAddingProject, setIsAddingProject] = useState(false);
 
   function handleSetIsAddingProject(title) {
@@ -21,7 +21,12 @@ export default function ProjectSection({ projects, setNewProject }) {
       />
       <ul className='project-section__list'>
         {projects.map(project =>
-          <ProjectSectionListItem key={project.id} project={project} />
+          <ProjectSectionListItem
+            key={project.id}
+            id={project.id}
+            title={project.title}
+            editProject={editProject}
+            removeProject={removeProject} />
         )}
       </ul>
     </div>
