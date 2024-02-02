@@ -19,14 +19,14 @@
 }
 
 .project-section__project-control-btn {
-  aspect-ratio: 1 / 1;
   appearance: none;
   background-color: transparent;
   transition: all 0.15s ease-in-out;
 
+  aspect-ratio: 1 / 1;
   border: none;
   margin-left: 0.5ch;
-  height: calc(2.25rem * 0.7);
+  height: calc(2.25rem * 0.675);
 }
 
 .project-section__project-control-btn:active {
@@ -54,17 +54,16 @@
 
   border: none;
   height: 100%;
-  margin-right: 0.5ch;
   padding-left: 1ch;
   width: 100%;
 }
 
 .project-section__edit-project-button {
-  aspect-ratio: 1 / 1;
   appearance: none;
   background-color: transparent;
   transition: all 0.15s ease-in-out;
 
+  aspect-ratio: 1 / 1;
   border: none;
   margin-left: 0.5ch;
   height: calc(2.25rem * 0.6);

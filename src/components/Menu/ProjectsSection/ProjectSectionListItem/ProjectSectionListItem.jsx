@@ -6,6 +6,11 @@ export default function ProjectSectionListItem({ id, title, editProject, removeP
   const [isEditingProject, setIsEditingProject] = useState(false);
   const [newProjectName, setNewProjectName] = useState(title);
 
+  function cancelForm() {
+    setIsEditingProject(false);
+    setNewProjectName(title);
+  }
+
   return (
     <li
       className={
@@ -25,22 +30,24 @@ export default function ProjectSectionListItem({ id, title, editProject, removeP
                   editProject(id, newProjectName);
                   setIsEditingProject(false);
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') {
+                    cancelForm();
+                  }
+                }}
               >
                 <input
                   className='project-section__eit-project-input'
                   type='text'
                   name='edit-project-name'
-                  placeholder='New project title'
+                  placeholder='New title'
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
                 />
                 <button
                   className='project-section__edit-project-button'
                   type='reset'
-                  onClick={() => {
-                    setIsEditingProject(false);
-                    setNewProjectName(title);
-                  }}
+                  onClick={cancelForm}
                 >
                   <svg
                     className='project-section__edit-project-icon'

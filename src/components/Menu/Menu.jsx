@@ -27,7 +27,12 @@ export default function Menu({ projects, setNewProject, editProject, removeProje
         Add task
       </button>
       <HomeSection />
-      <ProjectSection projects={projects} setNewProject={setNewProject} editProject={editProject} removeProject={removeProject} />
+      <ProjectSection
+        projects={projects}
+        setNewProject={setNewProject}
+        editProject={editProject}
+        removeProject={removeProject}
+      />
     </div>
   );
 }
