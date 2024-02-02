@@ -29,10 +29,6 @@
   height: calc(2.25rem * 0.675);
 }
 
-.project-section__project-control-btn:active {
-  transform: scale(0.925);
-}
-
 .project-section__project-control-icon {
   fill: var(--font-color);
   transition: all 0.15s ease-in-out;
@@ -67,10 +63,6 @@
   border: none;
   margin-left: 0.5ch;
   height: calc(2.25rem * 0.6);
-}
-
-.project-section__edit-project-button:active {
-  transform: scale(0.925);
 }
 
 .project-section__edit-project-icon {
