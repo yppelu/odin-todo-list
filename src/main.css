@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Roboto";
-  src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+  src: url("/fonts/Roboto-Regular.woff2") format("woff2");
   font-stretch: normal;
   font-style: normal;
   font-variant: normal;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("/fonts/Roboto-Medium.ttf") format("truetype");
+  src: url("/fonts/Roboto-Medium.woff2") format("woff2");
   font-stretch: normal;
   font-style: normal;
   font-variant: normal;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+  src: url("/fonts/Roboto-Bold.woff2") format("woff2");
   font-stretch: normal;
   font-style: normal;
   font-variant: normal;
@@ -85,7 +85,32 @@ button {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+.light {
+  --bg-color: #FFFFFF;
+  --font-color: #2F2F2F;
+  --main-bg-color: #F3F7F0;
+  --primary-color: #DC4C3E;
+}
+
+.dark {
+  --bg-color: #282828;
+  --font-color: #F3F7F0;
+  --main-bg-color: #1F1F1F;
+  --primary-color: #DC4C3E;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--font-color);
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
+}
+
+#root {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
 }

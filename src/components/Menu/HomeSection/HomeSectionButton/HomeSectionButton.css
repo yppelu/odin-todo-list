@@ -1,0 +1,17 @@
+.home-section__open-section-btn {
+  background-color: transparent;
+
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+
+  border: none;
+  padding-left: 1ch;
+  height: 100%;
+  width: 100%;
+}
+
+.home-section__open-section-icon {
+  fill: var(--font-color);
+  height: 70%;
+}

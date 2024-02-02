@@ -1,0 +1,58 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 1rem;
+  height: 100%;
+  width: 300px;
+}
+
+.menu__header {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+
+  height: 3rem;
+}
+
+.menu__logo {
+  fill: var(--primary-color);
+  height: 85%;
+}
+
+.menu__title {
+  font-size: min(2rem, 32px);
+  font-weight: 700;
+}
+
+.menu__add-task-btn {
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  color: #F3F7F0;
+  transition: all 0.15s ease-in-out;
+
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.menu__add-task-icon {
+  fill: #F3F7F0;
+  height: 40%;
+}
+
+.menu__add-task-btn:active {
+  transform: scale(0.975);
+}
+
+@media (hover: hover) {
+  .menu__add-task-btn:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 85%, #000000 15%);
+  }
+}
