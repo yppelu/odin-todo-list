@@ -1,11 +1,13 @@
-import { useState } from 'react';
-
-import { exampleData } from './helpers/exampleData.js';
+import { useEffect, useState } from 'react';
 
 import Menu from './components/Menu/Menu';
 
 export default function App() {
-  const [projects, setProjects] = useState(exampleData);
+  const [projects, setProjects] = useState(JSON.parse(localStorage.getItem('projects')));
+
+  useEffect(() => {
+    localStorage.setItem('projects', JSON.stringify(projects));
+  }, [projects]);
 
   function handleSetNewProject(title) {
     const newProjects = JSON.parse(JSON.stringify(projects));
