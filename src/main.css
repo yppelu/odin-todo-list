@@ -114,3 +114,38 @@ body {
   max-width: 1200px;
   width: 100%;
 }
+
+.open-menu-btn {
+  background-color: transparent;
+  transition:
+    transform 0.15s ease-in-out,
+    left 0.15s ease-in-out;
+
+  display: none;
+
+  position: absolute;
+  top: 1rem;
+  left: calc(300px + 1rem);
+
+  aspect-ratio: 1 / 1;
+  border: none;
+  width: 3rem;
+}
+
+.open-menu-btn-menu--collapsed {
+  left: 1rem;
+}
+
+.open-menu-btn:active {
+  transform: scale(0.95);
+}
+
+.open-menu-icon {
+  fill: var(--font-color);
+}
+
+@media screen and (max-width: 600px) {
+  .open-menu-btn {
+    display: block;
+  }
+}
