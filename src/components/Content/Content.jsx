@@ -1,21 +1,7 @@
 import './Content.css';
 import TodoBlock from './TodoBlock/TodoBlock';
 
-/* function getTodayDate() {
-  const today = new Date();
-
-  const yearAsString = String(today.getFullYear());
-
-  const month = today.getMonth() + 1;
-  const monthAsString = month < 10 ? '0' + month : String(month);
-
-  const date = today.getDate();
-  const dateAsString = date < 10 ? '0' + date : String(date);
-
-  return `${yearAsString}-${monthAsString}-${dateAsString}`;
-} */
-
-export default function Content({ title, contentId, projects, toggleImportant, removeTodo }) {
+export default function Content({ title, contentId, projects, toggleImportant, editTodo, removeTodo }) {
   function prepareData() {
     const preparedData = {
       today: [],
@@ -30,15 +16,15 @@ export default function Content({ title, contentId, projects, toggleImportant, r
         for (const todo of project.todos) {
           const diff = Date.now() - new Date(todo.dueDate + 'T00:00:00.000');
           if (diff <= 0) {
-            preparedData.later.push(todo);
+            preparedData.later.push({ ...todo, projectTitle: project.title });
           } else if (diff > 0 && diff < 86400000) {
-            preparedData.today.push(todo);
+            preparedData.today.push({ ...todo, projectTitle: project.title });
           } else if (diff < 86400000 * 2) {
-            preparedData.tomorrow.push(todo);
+            preparedData.tomorrow.push({ ...todo, projectTitle: project.title });
           } else if (diff < 86400000 * 7) {
-            preparedData.thisWeek.push(todo);
+            preparedData.thisWeek.push({ ...todo, projectTitle: project.title });
           } else {
-            preparedData.expired.push(todo);
+            preparedData.expired.push({ ...todo, projectTitle: project.title });
           }
         }
       }
@@ -48,15 +34,15 @@ export default function Content({ title, contentId, projects, toggleImportant, r
           if (todo.important) {
             const diff = Date.now() - new Date(todo.dueDate + 'T00:00:00.000');
             if (diff <= 0) {
-              preparedData.later.push(todo);
+              preparedData.later.push({ ...todo, projectTitle: project.title });
             } else if (diff > 0 && diff < 86400000) {
-              preparedData.today.push(todo);
+              preparedData.today.push({ ...todo, projectTitle: project.title });
             } else if (diff < 86400000 * 2) {
-              preparedData.tomorrow.push(todo);
+              preparedData.tomorrow.push({ ...todo, projectTitle: project.title });
             } else if (diff < 86400000 * 7) {
-              preparedData.thisWeek.push(todo);
+              preparedData.thisWeek.push({ ...todo, projectTitle: project.title });
             } else {
-              preparedData.expired.push(todo);
+              preparedData.expired.push({ ...todo, projectTitle: project.title });
             }
           }
         }
@@ -81,15 +67,15 @@ export default function Content({ title, contentId, projects, toggleImportant, r
           for (const todo of project.todos) {
             const diff = Date.now() - new Date(todo.dueDate + 'T00:00:00.000');
             if (diff <= 0) {
-              preparedData.later.push(todo);
+              preparedData.later.push({ ...todo, projectTitle: project.title });
             } else if (diff > 0 && diff < 86400000) {
-              preparedData.today.push(todo);
+              preparedData.today.push({ ...todo, projectTitle: project.title });
             } else if (diff < 86400000 * 2) {
-              preparedData.tomorrow.push(todo);
+              preparedData.tomorrow.push({ ...todo, projectTitle: project.title });
             } else if (diff < 86400000 * 7) {
-              preparedData.thisWeek.push(todo);
+              preparedData.thisWeek.push({ ...todo, projectTitle: project.title });
             } else {
-              preparedData.expired.push(todo);
+              preparedData.expired.push({ ...todo, projectTitle: project.title });
             }
           }
           break;
@@ -121,6 +107,7 @@ export default function Content({ title, contentId, projects, toggleImportant, r
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    editTodo={editTodo}
                     removeTodo={removeTodo}
                   />
                 )
@@ -142,6 +129,7 @@ export default function Content({ title, contentId, projects, toggleImportant, r
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    editTodo={editTodo}
                     removeTodo={removeTodo}
                   />
                 )
@@ -163,6 +151,7 @@ export default function Content({ title, contentId, projects, toggleImportant, r
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    editTodo={editTodo}
                     removeTodo={removeTodo}
                   />
                 )
@@ -184,6 +173,7 @@ export default function Content({ title, contentId, projects, toggleImportant, r
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    editTodo={editTodo}
                     removeTodo={removeTodo}
                   />
                 )
@@ -205,6 +195,7 @@ export default function Content({ title, contentId, projects, toggleImportant, r
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    editTodo={editTodo}
                     removeTodo={removeTodo}
                   />
                 )

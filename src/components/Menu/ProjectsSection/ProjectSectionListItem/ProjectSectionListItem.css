@@ -39,6 +39,7 @@
 }
 
 .project-section__project-control-icon {
+  opacity: 0.7;
   fill: var(--font-color);
   transition: all 0.15s ease-in-out;
 }

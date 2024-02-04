@@ -1,0 +1,133 @@
+.add-task-form-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+}
+
+.add-task-form {
+  background-color: var(--bg-color);
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  border: 2px solid var(--font-color);
+  margin-top: 1rem;
+  padding: 1rem;
+  max-width: calc(40ch + 2rem);
+  width: 95%;
+}
+
+.add-task-form__label {
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.add-task-form__select {
+  background-color: var(--main-bg-color);
+  border-radius: 0.25rem;
+  font-weight: 400;
+
+  border: 1px solid var(--font-color);
+  padding: 0.5ch;
+  width: 50%;
+}
+
+.add-task-form__text-input {
+  appearance: none;
+  background-color: var(--main-bg-color);
+  border-radius: 0.25rem;
+  font-weight: 400;
+
+  border: 1px solid var(--font-color);
+  padding: 0.5ch;
+  max-width: 40ch;
+  width: 100%;
+}
+
+.add-task-form__textarea {
+  appearance: none;
+  background-color: var(--main-bg-color);
+  border-radius: 0.25rem;
+  font-weight: 400;
+
+  border: 1px solid var(--font-color);
+  padding: 0.5ch;
+  max-width: 40ch;
+  width: 100%;
+}
+
+.add-task-form__date-input {
+  background-color: var(--main-bg-color);
+  border-radius: 0.25rem;
+  font-weight: 400;
+
+  border: 1px solid var(--font-color);
+  padding: 0.5ch;
+  width: 100%;
+}
+
+.add-task-form__date-input::-webkit-calendar-picker-indicator {
+  background-color: #F3F7F0;
+  border-radius: 50%;
+}
+
+.add-task-form__label--important {
+  flex-direction: row;
+  align-items: center;
+  gap: 1ch;
+
+  width: max-content;
+}
+
+.add-task-form__checkbox {
+  background-color: var(--font-color);
+
+  height: 1rem;
+  width: 1rem;
+}
+
+.add-task-form__buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.add-task-form__button {
+  background-color: var(--bg-color);
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease-in-out;
+
+  border: 1px solid var(--font-color);
+  padding: 0.25rem 0;
+  width: 10ch;
+}
+
+.add-task-form__button.add-task-form__button--submit-button {
+  background-color: var(--primary-color);
+}
+
+@media (hover: hover) {
+  .add-task-form__button:hover {
+    background-color: var(--main-bg-color);
+  }
+
+  .add-task-form__button--submit-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 85%, #000000 15%);
+  }
+}
+
+@media (hover: none) {
+  .add-task-form__button {
+    background-color: var(--main-bg-color);
+  }
+}

@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 import { exampleData } from './helpers/exampleData.js';
 import Menu from './components/Menu/Menu';
 import Content from './components/Content/Content.jsx';
+import AddTaskForm from './components/AddTaskForm/AddTaskForm.jsx';
 
 export default function App() {
   const [projects, setProjects] = useState(JSON.parse(localStorage.getItem('projects')) ?? exampleData);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(window.innerWidth <= 600);
   const [contentId, setContentId] = useState(2);
+  const [isAddTaskFormOpen, setIsAddTaskFormOpen] = useState(false);
+  const [idForAddTaskForm, setIdForAddTaskForm] = useState(null);
 
   const contentTitle = getTitleFromContentId(contentId);
 
@@ -65,6 +68,55 @@ export default function App() {
     setProjects(newProjects);
   }
 
+  function handleOpenAddTaskForm(id) {
+    if (id) {
+      setIdForAddTaskForm(id);
+    }
+    setIsAddTaskFormOpen(true);
+  }
+
+  function handleCloseAddTaskForm() {
+    setIdForAddTaskForm(null);
+    setIsAddTaskFormOpen(false);
+  }
+
+  function handleAddTodo(data) {
+    const newProjects = JSON.parse(JSON.stringify(projects));
+    const projectId = Number(data.projectId);
+    for (const project of newProjects) {
+      if (project.id === projectId) {
+        project.todos.push({
+          id: Date.now(),
+          title: data.title,
+          description: data.description,
+          dueDate: data.dueDate,
+          important: data.important
+        });
+        setProjects(newProjects);
+        return;
+      }
+    }
+  }
+
+  function handleEditTodo(id, data) {
+    const newProjects = JSON.parse(JSON.stringify(projects));
+    const projectId = Number(data.projectId);
+    for (const project of newProjects) {
+      if (project.id === projectId) {
+        for (const todo of project.todos) {
+          if (todo.id === id) {
+            todo.title = data.title;
+            todo.description = data.description;
+            todo.dueDate = data.dueDate;
+            todo.important = data.important;
+            setProjects(newProjects);
+            return;
+          }
+        }
+      }
+    }
+  }
+
   function handleRemoveTodo(todoId) {
     const newProjects = JSON.parse(JSON.stringify(projects));
     for (const project of newProjects) {
@@ -93,6 +145,18 @@ export default function App() {
 
   return (
     <>
+      {
+        isAddTaskFormOpen
+          ?
+          <AddTaskForm
+            id={idForAddTaskForm}
+            projects={projects}
+            closeForm={handleCloseAddTaskForm}
+            editTodo={handleEditTodo}
+            addTodo={handleAddTodo}
+          />
+          : null
+      }
       <button
         className={isMenuCollapsed ? 'open-menu-btn open-menu-btn-menu--collapsed' : 'open-menu-btn'}
         type='button'
@@ -106,6 +170,7 @@ export default function App() {
       </button>
       <Menu
         isMenuCollapsed={isMenuCollapsed}
+        addTask={handleOpenAddTaskForm}
         projects={projects}
         editProject={handleEditProject}
         removeProject={handleRemoveProject}
@@ -118,6 +183,7 @@ export default function App() {
         contentId={contentId}
         projects={projects}
         toggleImportant={handleToggleImportant}
+        editTodo={handleOpenAddTaskForm}
         removeTodo={handleRemoveTodo}
       />
     </>

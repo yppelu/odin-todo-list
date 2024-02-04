@@ -1,6 +1,6 @@
 import './TodoBlock.css';
 
-export default function TodoBlock({ id, title, description, dueDate, projectTitle, important, toggleImportant, removeTodo }) {
+export default function TodoBlock({ id, title, description, dueDate, projectTitle, important, toggleImportant, editTodo, removeTodo }) {
   return (
     <div className='task'>
       <button className='task__complete-task-btn' type='button'>
@@ -8,6 +8,7 @@ export default function TodoBlock({ id, title, description, dueDate, projectTitl
           className='task__complete-task-icon'
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
+          onClick={() => removeTodo(id)}
         >
           <path d='M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z' />
         </svg>
@@ -30,7 +31,7 @@ export default function TodoBlock({ id, title, description, dueDate, projectTitl
               <path d='M11 16H13V18H11V16M11 10H13V14H11V10M19 3H18V1H16V3H8V1H6V3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 5V7H5V5H19M5 19V9H19V19H5Z' />
             </svg>
           </button>
-          <button className='task__control-btn' type='button'>
+          <button className='task__control-btn' type='button' onClick={() => editTodo(id)}>
             <svg
               className='task__control-icon'
               xmlns='http://www.w3.org/2000/svg'
