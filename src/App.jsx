@@ -65,6 +65,19 @@ export default function App() {
     setProjects(newProjects);
   }
 
+  function handleRemoveTodo(todoId) {
+    const newProjects = JSON.parse(JSON.stringify(projects));
+    for (const project of newProjects) {
+      for (let i = 0; i < project.todos.length; i++) {
+        if (project.todos[i].id === todoId) {
+          project.todos.splice(i, 1);
+          setProjects(newProjects);
+          return;
+        }
+      }
+    }
+  }
+
   function handleToggleImportant(todoId) {
     const newProjects = JSON.parse(JSON.stringify(projects));
     for (const project of newProjects) {
@@ -100,7 +113,13 @@ export default function App() {
         setContentId={handleSetContentId}
         contentId={contentId}
       />
-      <Content title={contentTitle} contentId={contentId} projects={projects} toggleImportant={handleToggleImportant} />
+      <Content
+        title={contentTitle}
+        contentId={contentId}
+        projects={projects}
+        toggleImportant={handleToggleImportant}
+        removeTodo={handleRemoveTodo}
+      />
     </>
   );
 }

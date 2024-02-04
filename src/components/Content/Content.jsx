@@ -15,7 +15,7 @@ import TodoBlock from './TodoBlock/TodoBlock';
   return `${yearAsString}-${monthAsString}-${dateAsString}`;
 } */
 
-export default function Content({ title, contentId, projects, toggleImportant }) {
+export default function Content({ title, contentId, projects, toggleImportant, removeTodo }) {
   function prepareData() {
     const preparedData = {
       today: [],
@@ -121,6 +121,7 @@ export default function Content({ title, contentId, projects, toggleImportant })
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    removeTodo={removeTodo}
                   />
                 )
               }
@@ -141,6 +142,7 @@ export default function Content({ title, contentId, projects, toggleImportant })
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    removeTodo={removeTodo}
                   />
                 )
               }
@@ -161,6 +163,7 @@ export default function Content({ title, contentId, projects, toggleImportant })
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    removeTodo={removeTodo}
                   />
                 )
               }
@@ -181,6 +184,7 @@ export default function Content({ title, contentId, projects, toggleImportant })
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    removeTodo={removeTodo}
                   />
                 )
               }
@@ -201,6 +205,7 @@ export default function Content({ title, contentId, projects, toggleImportant })
                     projectTitle={todo.projectTitle}
                     important={todo.important}
                     toggleImportant={toggleImportant}
+                    removeTodo={removeTodo}
                   />
                 )
               }
