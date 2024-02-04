@@ -3,7 +3,7 @@ import './ProjectSection.css';
 import ProjectSectionListItem from './ProjectSectionListItem/ProjectSectionListItem';
 import ProjectSectionHeader from './ProjectSectionHeader/ProjectSectionHeader';
 
-export default function ProjectSection({ projects, setNewProject, editProject, removeProject, setContentId, contentId }) {
+export default function ProjectSection({ collapseMenu, projects, setNewProject, editProject, removeProject, setContentId, contentId }) {
   function handleAddProject(title) { setNewProject(title); }
 
   return (
@@ -13,6 +13,7 @@ export default function ProjectSection({ projects, setNewProject, editProject, r
         {projects.map(project =>
           <ProjectSectionListItem
             key={project.id}
+            collapseMenu={collapseMenu}
             id={project.id}
             title={project.title}
             editProject={editProject}

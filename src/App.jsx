@@ -37,6 +37,10 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  function handleCollapseMenu() {
+    if (window.innerWidth <= 600) setIsMenuCollapsed(true);
+  }
+
   function handleSetContentId(id) {
     setContentId(id);
   }
@@ -170,6 +174,7 @@ export default function App() {
       </button>
       <Menu
         isMenuCollapsed={isMenuCollapsed}
+        collapseMenu={handleCollapseMenu}
         addTask={handleOpenAddTaskForm}
         projects={projects}
         editProject={handleEditProject}

@@ -3,7 +3,7 @@ import './Menu.css';
 import HomeSection from './HomeSection/HomeSection';
 import ProjectSection from './ProjectsSection/ProjectSection';
 
-export default function Menu({ isMenuCollapsed, addTask, projects, setNewProject, editProject, removeProject, setContentId, contentId }) {
+export default function Menu({ isMenuCollapsed, collapseMenu, addTask, projects, setNewProject, editProject, removeProject, setContentId, contentId }) {
   return (
     <div className={isMenuCollapsed ? 'menu menu--collapsed' : 'menu'}>
       <div className='menu__header'>
@@ -26,8 +26,9 @@ export default function Menu({ isMenuCollapsed, addTask, projects, setNewProject
         </svg>
         Add task
       </button>
-      <HomeSection setContentId={setContentId} contentId={contentId} />
+      <HomeSection collapseMenu={collapseMenu} setContentId={setContentId} contentId={contentId} />
       <ProjectSection
+        collapseMenu={collapseMenu}
         projects={projects}
         editProject={editProject}
         removeProject={removeProject}

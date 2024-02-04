@@ -2,17 +2,20 @@ import './HomeSection.css';
 
 import HomeSectionButton from './HomeSectionButton/HomeSectionButton';
 
-export default function HomeSection({ setContentId, contentId }) {
+export default function HomeSection({ collapseMenu, setContentId, contentId }) {
   function setAllTasks() {
     setContentId(0);
+    collapseMenu(true);
   }
 
   function setImportantTasks() {
     setContentId(1);
+    collapseMenu(true);
   }
 
   function setTodayTasks() {
     setContentId(2);
+    collapseMenu(true);
   }
 
   return (

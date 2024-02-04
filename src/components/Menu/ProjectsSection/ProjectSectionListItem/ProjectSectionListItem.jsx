@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './ProjectSectionListItem.css';
 
-export default function ProjectSectionListItem({ id, title, editProject, removeProject, setContentId, contentId }) {
+export default function ProjectSectionListItem({ id, collapseMenu, title, editProject, removeProject, setContentId, contentId }) {
   const [isEditingProject, setIsEditingProject] = useState(false);
   const [newProjectName, setNewProjectName] = useState(title);
 
@@ -75,7 +75,11 @@ export default function ProjectSectionListItem({ id, title, editProject, removeP
               <button
                 className='project-section__open-section-btn'
                 type='button'
-                onClick={() => setContentId(id)}
+                onClick={() => {
+                  setContentId(id);
+                  collapseMenu(true);
+                }
+                }
               >
                 {title}
               </button>
