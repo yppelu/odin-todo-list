@@ -34,9 +34,18 @@ export default function AddTaskForm({ id, projects, closeForm, addTodo, editTodo
   }, [id, projects]);
 
   return (
-    <div className='add-task-form-wrapper'>
+    <div
+      className='add-task-form-wrapper'
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          closeForm();
+        }
+      }}
+      onClick={closeForm}
+    >
       <form
         className='add-task-form'
+        onClick={(e) => e.stopPropagation()}
         onSubmit={(e) => {
           e.preventDefault();
           if (projectId !== '' && title !== '' && dueDate !== '') {
