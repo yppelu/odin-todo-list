@@ -33,7 +33,7 @@ export const exampleData = [
       {
         id: 3,
         title: 'Visit Tom',
-        description: 'Don\'t forget, that\'s your last chance!',
+        description: 'Remember, that\'s your last chance!',
         dueDate: '2024-01-13',
         important: true
       },
@@ -54,7 +54,7 @@ export const exampleData = [
       {
         id: 6,
         title: 'Get dressed',
-        description: 'Won\'t you meet the guests naked?!',
+        description: 'Won\'t you be meeting the guests naked?!',
         dueDate: '2024-02-13',
         important: true
       }

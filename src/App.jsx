@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { exampleData } from './helpers/exampleData.js';
 import Menu from './components/Menu/Menu';
 import Content from './components/Content/Content.jsx';
 import AddTaskForm from './components/AddTaskForm/AddTaskForm.jsx';
 
 export default function App() {
-  const [projects, setProjects] = useState(JSON.parse(localStorage.getItem('projects')) ?? exampleData);
+  const [projects, setProjects] = useState(JSON.parse(localStorage.getItem('projects')) ?? []);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(window.innerWidth <= 600);
   const [contentId, setContentId] = useState(2);
   const [isAddTaskFormOpen, setIsAddTaskFormOpen] = useState(false);
