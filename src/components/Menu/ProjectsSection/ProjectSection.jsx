@@ -3,7 +3,7 @@ import './ProjectSection.css';
 import ProjectSectionListItem from './ProjectSectionListItem/ProjectSectionListItem';
 import ProjectSectionHeader from './ProjectSectionHeader/ProjectSectionHeader';
 
-export default function ProjectSection({ projects, setNewProject, editProject, removeProject }) {
+export default function ProjectSection({ projects, setNewProject, editProject, removeProject, setContentId, contentId }) {
   function handleAddProject(title) { setNewProject(title); }
 
   return (
@@ -16,7 +16,9 @@ export default function ProjectSection({ projects, setNewProject, editProject, r
             id={project.id}
             title={project.title}
             editProject={editProject}
-            removeProject={removeProject} />
+            removeProject={removeProject}
+            setContentId={setContentId}
+            contentId={contentId} />
         )}
       </ul>
     </div>

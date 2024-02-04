@@ -23,8 +23,16 @@
   width: 100%;
 }
 
+.home-section__list-item--chosen {
+  background-color: var(--main-bg-color);
+}
+
 @media (hover: hover) {
   .home-section__list-item:hover {
     background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
+  }
+
+  .home-section__list-item--chosen:hover {
+    background-color: var(--main-bg-color);
   }
 }

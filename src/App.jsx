@@ -2,10 +2,54 @@ import { useEffect, useState } from 'react';
 
 import { exampleData } from './helpers/exampleData.js';
 import Menu from './components/Menu/Menu';
+import Content from './components/Content/Content.jsx';
 
 export default function App() {
   const [projects, setProjects] = useState(JSON.parse(localStorage.getItem('projects')) ?? exampleData);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(window.innerWidth <= 600);
+  const [contentId, setContentId] = useState(2);
+
+  const contentTitle = getTitleFromContentId(contentId);
+
+  function getTitleFromContentId(id) {
+    if (id === 0) return 'All Tasks';
+    if (id === 1) return 'Important';
+    if (id === 2) return 'Today';
+
+    for (const project of projects) {
+      if (project.id === id) return project.title;
+    }
+  }
+
+  function getTasksForContentId(id) {
+    const tasks = [];
+
+    if (id === 0) {
+      for (const project of projects) {
+        tasks.push(...project.todos);
+      }
+    } else if (id === 1) {
+      for (const project of projects) {
+        tasks.push(...project.todos.filter(todo => todo.important));
+      }
+    } else if (id === 2) {
+      const date = new Date();
+      const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+      for (const project of projects) {
+        tasks.push(...project.todos.filter(todo => todo.dueDate === today));
+      }
+    } else {
+      for (const project of projects) {
+        if (project.id === id) {
+          tasks.push(...project.todos);
+          break;
+        }
+      }
+    }
+
+    return tasks;
+  }
 
   useEffect(() => {
     localStorage.setItem('projects', JSON.stringify(projects));
@@ -20,20 +64,8 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  function handleSetNewProject(title) {
-    const newProjects = JSON.parse(JSON.stringify(projects));
-    const newProject = {
-      id: Date.now(),
-      title: title,
-      todos: []
-    };
-    newProjects.push(newProject);
-    setProjects(newProjects);
-  }
-
-  function handleRemoveProject(id) {
-    const newProjects = JSON.parse(JSON.stringify(projects)).filter(project => project.id !== id);
-    setProjects(newProjects);
+  function handleSetContentId(id) {
+    setContentId(id);
   }
 
   function handleEditProject(id, title) {
@@ -44,6 +76,22 @@ export default function App() {
         break;
       }
     }
+    setProjects(newProjects);
+  }
+
+  function handleRemoveProject(id) {
+    const newProjects = JSON.parse(JSON.stringify(projects)).filter(project => project.id !== id);
+    setProjects(newProjects);
+  }
+
+  function handleSetNewProject(title) {
+    const newProjects = JSON.parse(JSON.stringify(projects));
+    const newProject = {
+      id: Date.now(),
+      title: title,
+      todos: []
+    };
+    newProjects.push(newProject);
     setProjects(newProjects);
   }
 
@@ -63,10 +111,13 @@ export default function App() {
       <Menu
         isMenuCollapsed={isMenuCollapsed}
         projects={projects}
-        setNewProject={handleSetNewProject}
         editProject={handleEditProject}
         removeProject={handleRemoveProject}
+        setNewProject={handleSetNewProject}
+        setContentId={handleSetContentId}
+        contentId={contentId}
       />
+      <Content title={contentTitle} content={getTasksForContentId(contentId)} />
     </>
   );
 }

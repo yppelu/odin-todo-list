@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './ProjectSectionListItem.css';
 
-export default function ProjectSectionListItem({ id, title, editProject, removeProject }) {
+export default function ProjectSectionListItem({ id, title, editProject, removeProject, setContentId, contentId }) {
   const [isEditingProject, setIsEditingProject] = useState(false);
   const [newProjectName, setNewProjectName] = useState(title);
 
@@ -14,8 +14,9 @@ export default function ProjectSectionListItem({ id, title, editProject, removeP
   return (
     <li
       className={
-        isEditingProject
-          ? 'project-section__list-item project-section__list-item--editing'
+        contentId === id ? isEditingProject
+          ? 'project-section__list-item project-section__list-item--chosen project-section__list-item--editing'
+          : 'project-section__list-item project-section__list-item--chosen'
           : 'project-section__list-item'
       }
     >
@@ -71,7 +72,13 @@ export default function ProjectSectionListItem({ id, title, editProject, removeP
           )
           : (
             <>
-              <button className='project-section__open-section-btn' type='button'>{title}</button>
+              <button
+                className='project-section__open-section-btn'
+                type='button'
+                onClick={() => setContentId(id)}
+              >
+                {title}
+              </button>
               <button
                 className='project-section__project-control-btn'
                 type='button'
@@ -88,7 +95,11 @@ export default function ProjectSectionListItem({ id, title, editProject, removeP
               <button
                 className='project-section__project-control-btn'
                 type='button'
-                onClick={() => removeProject(id)}
+                onClick={() => {
+                  removeProject(id);
+                  setContentId(0);
+                }
+                }
               >
                 <svg
                   className='project-section__project-control-icon'

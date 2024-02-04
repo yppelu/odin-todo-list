@@ -1,0 +1,14 @@
+.content {
+  background-color: var(--main-bg-color);
+
+  margin-top: 5rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.content__title {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  margin-bottom: 1rem;
+}

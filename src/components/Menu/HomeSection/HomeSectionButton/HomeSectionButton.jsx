@@ -11,11 +11,13 @@ function getTitleFromType(type) {
   return result.charAt(0).toUpperCase() + result.slice(1);
 }
 
-export default function HomeSectionButton({ type }) {
+export default function HomeSectionButton({ type, setContentId }) {
+  const title = getTitleFromType(type);
+
   return (
-    <button className='home-section__open-section-btn' type='button'>
+    <button className='home-section__open-section-btn' type='button' onClick={setContentId}>
       {buttonIcons[type]}
-      {getTitleFromType(type)}
+      {title}
     </button>
   );
 }

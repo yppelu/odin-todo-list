@@ -8,13 +8,22 @@
   width: 100%;
 }
 
+.project-section__list-item--chosen {
+  background-color: var(--main-bg-color);
+}
+
+.project-section__list-item--editing {
+  background-color: transparent;
+}
+
 .project-section__open-section-btn {
   background-color: transparent;
   text-align: start;
 
+  align-self: stretch;
+
   border: none;
   padding-left: 1ch;
-  height: 100%;
   width: 100%;
 }
 
@@ -74,10 +83,6 @@
     background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);
   }
 
-  .project-section__list-item--editing:hover {
-    background-color: transparent;
-  }
-
   .project-section__project-control-btn {
     opacity: 0;
   }
@@ -92,5 +97,13 @@
 
   .project-section__project-control-btn:hover .project-section__project-control-icon {
     opacity: 1;
+  }
+
+  .project-section__list-item--chosen:hover {
+    background-color: var(--main-bg-color);
+  }
+
+  .project-section__list-item--editing:hover {
+    background-color: transparent;
   }
 }
