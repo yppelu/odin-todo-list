@@ -16,6 +16,13 @@ export const exampleData = [
         description: 'Time to increase them!',
         dueDate: '2024-02-12',
         important: false
+      },
+      {
+        id: 123,
+        title: 'Towel',
+        description: 'Don\'t forget it today!',
+        dueDate: '2024-02-04',
+        important: true
       }
     ]
   },

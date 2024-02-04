@@ -21,36 +21,6 @@ export default function App() {
     }
   }
 
-  function getTasksForContentId(id) {
-    const tasks = [];
-
-    if (id === 0) {
-      for (const project of projects) {
-        tasks.push(...project.todos);
-      }
-    } else if (id === 1) {
-      for (const project of projects) {
-        tasks.push(...project.todos.filter(todo => todo.important));
-      }
-    } else if (id === 2) {
-      const date = new Date();
-      const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-
-      for (const project of projects) {
-        tasks.push(...project.todos.filter(todo => todo.dueDate === today));
-      }
-    } else {
-      for (const project of projects) {
-        if (project.id === id) {
-          tasks.push(...project.todos);
-          break;
-        }
-      }
-    }
-
-    return tasks;
-  }
-
   useEffect(() => {
     localStorage.setItem('projects', JSON.stringify(projects));
   }, [projects]);
@@ -95,6 +65,19 @@ export default function App() {
     setProjects(newProjects);
   }
 
+  function handleToggleImportant(todoId) {
+    const newProjects = JSON.parse(JSON.stringify(projects));
+    for (const project of newProjects) {
+      for (const todo of project.todos) {
+        if (todo.id === todoId) {
+          todo.important = !todo.important;
+          setProjects(newProjects);
+          return;
+        }
+      }
+    }
+  }
+
   return (
     <>
       <button
@@ -117,7 +100,7 @@ export default function App() {
         setContentId={handleSetContentId}
         contentId={contentId}
       />
-      <Content title={contentTitle} content={getTasksForContentId(contentId)} />
+      <Content title={contentTitle} contentId={contentId} projects={projects} toggleImportant={handleToggleImportant} />
     </>
   );
 }

@@ -1,0 +1,124 @@
+.task {
+  transition: all 0.15s ease-in-out;
+
+  display: flex;
+  gap: 1ch;
+
+  border-bottom: 1px solid color-mix(in srgb, var(--font-color) 25%, var(--main-bg-color) 75%);
+  border-top: 1px solid color-mix(in srgb, var(--font-color) 25%, var(--main-bg-color) 75%);
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.task__complete-task-btn {
+  background-color: transparent;
+  border-radius: 50%;
+
+  border: 2px solid var(--font-color);
+  margin-top: 0.1675rem;
+  height: 2ch;
+  max-width: 2ch;
+  min-width: 2ch;
+}
+
+.task__complete-task-icon {
+  fill: var(--font-color);
+  opacity: 0;
+  transition: all 0.15s ease-in-out;
+}
+
+.task__block-divider {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.task__block-divider_main-info {
+  align-items: flex-start;
+  width: 100%;
+}
+
+.task__title {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.task__description {
+  font-size: 0.95rem;
+}
+
+.task__due-date {
+  color: var(--font-color);
+  font-size: 0.95rem;
+  opacity: 0.75;
+
+  margin-top: 0.5rem;
+}
+
+.task__control-buttons-block {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5ch;
+
+  width: max-content;
+}
+
+.task__control-btn {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  transition: all 0.15s ease-in-out;
+
+  width: 1.4rem;
+}
+
+.task__control-btn:active {
+  transform: scale(90%);
+}
+
+.task__control-icon {
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in-out;
+  fill: var(--font-color);
+}
+
+.task__control-icon--chosen-important {
+  opacity: 1;
+}
+
+.task__containing-project-name {
+  width: max-content;
+}
+
+
+@media (hover:hover) {
+  .task:hover {
+    border-bottom: 1px solid var(--font-color);
+    border-top: 1px solid var(--font-color);
+  }
+
+  .task__complete-task-icon:hover {
+    opacity: 0.5;
+  }
+
+  .task__control-btn {
+    opacity: 0;
+  }
+
+  .task:hover .task__control-btn {
+    opacity: 1;
+  }
+
+  .task__control-icon {
+    opacity: 0.5;
+  }
+
+  .task__control-btn:hover .task__control-icon {
+    opacity: 1;
+  }
+
+  .task__control-icon--chosen-important {
+    opacity: 1;
+  }
+}
