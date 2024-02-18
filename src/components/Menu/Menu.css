@@ -1,6 +1,7 @@
 .menu {
   background-color: var(--bg-color);
-  transition: transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out,
+    visibility 0.15s ease-in-out;
 
   display: flex;
   flex-direction: column;
@@ -15,6 +16,7 @@
 
 .menu--collapsed {
   transform: translateX(-100%);
+  visibility: hidden;
 }
 
 .menu__header {

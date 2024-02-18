@@ -70,6 +70,7 @@ export default function AddTaskForm({ id, projects, closeForm, addTodo, editTodo
           <select
             className='add-task-form__select'
             name='select-project'
+            autoFocus
             value={projectId}
             onChange={(e) => setProjectId(e.target.value)}
           >

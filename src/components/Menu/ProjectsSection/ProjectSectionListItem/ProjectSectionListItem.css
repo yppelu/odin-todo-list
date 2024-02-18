@@ -79,6 +79,14 @@
   fill: var(--font-color);
 }
 
+.project-section__project-control-btn:focus {
+  opacity: 1;
+}
+
+.project-section__project-control-btn:focus .project-section__project-control-icon {
+  opacity: 1;
+}
+
 @media (hover: hover) {
   .project-section__list-item:hover {
     background-color: color-mix(in srgb, var(--bg-color) 50%, var(--main-bg-color) 50%);

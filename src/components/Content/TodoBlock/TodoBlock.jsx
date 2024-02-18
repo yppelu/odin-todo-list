@@ -3,12 +3,15 @@ import './TodoBlock.css';
 export default function TodoBlock({ id, title, description, dueDate, projectTitle, important, toggleImportant, editTodo, removeTodo }) {
   return (
     <div className='task'>
-      <button className='task__complete-task-btn' type='button'>
+      <button
+        className='task__complete-task-btn'
+        type='button'
+        onClick={() => removeTodo(id)}
+      >
         <svg
           className='task__complete-task-icon'
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
-          onClick={() => removeTodo(id)}
         >
           <path d='M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z' />
         </svg>

@@ -95,6 +95,9 @@
   width: max-content;
 }
 
+.task__control-btn:focus {
+  opacity: 1;
+}
 
 @media (hover:hover) {
   .task:hover {
